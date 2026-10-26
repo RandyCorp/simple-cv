@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es-DO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generador de currículum gratis para República Dominicana</title>
+<meta name="description" content="Crea tu currículum en minutos desde el celular y descárgalo en PDF gratis, sin registro. Ejemplos para cajero, call center, turismo y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14213d;--muted:#5b6478;--line:#d9dee8;--bg:#f2f4f8;--card:#fff;--blue:#0b3d91;--red:#c8102e;--accent:#0b3d91}
+@media (prefers-color-scheme:dark){:root{--ink:#e8ecf5;--muted:#9aa4ba;--line:#2b3448;--bg:#0f1524;--card:#18203a;--blue:#7ea6ff}}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:Figtree,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.top{background:var(--blue);color:#fff;padding:18px 16px;border-bottom:4px solid var(--red)}
+@media (prefers-color-scheme:dark){.top{background:#0b2a66}}
+.top h1{margin:0;font-size:1.35rem;font-weight:800;max-width:900px;margin-inline:auto}
+.top p{margin:4px auto 0;max-width:900px;opacity:.9;font-size:.95rem}
+.wrap{max-width:1180px;margin:0 auto;padding:14px;display:grid;gap:16px}
+.tabs{display:flex;gap:8px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0;z-index:5}
+.tabs button{flex:1}
+button,.btn{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 14px;font-weight:700}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--red);outline-offset:1px}
+.tabs button[aria-pressed=true]{background:var(--blue);color:#fff;border-color:var(--blue)}
+.primary{background:var(--red);color:#fff;border-color:var(--red);font-size:1.05rem;padding:13px 18px}
+fieldset{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:14px;margin:0 0 14px}
+legend{font-weight:800;padding:0 6px;font-size:1.05rem}
+label{display:block;font-size:.85rem;font-weight:700;margin:10px 0 4px}
+input,textarea,select{width:100%;font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+textarea{min-height:76px;resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hint{font-size:.8rem;color:var(--muted);margin:4px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:8px 12px;font-size:.9rem}
+.entry{border:1px dashed var(--line);border-radius:8px;padding:10px;margin-top:10px}
+.entry .rm{background:none;border:none;color:var(--red);padding:2px 0;font-size:.85rem}
+.swatches{display:flex;gap:10px;margin-top:6px}
+.sw{width:34px;height:34px;border-radius:50%;padding:0;border:3px solid var(--card);box-shadow:0 0 0 1px var(--line)}
+.sw[aria-pressed=true]{box-shadow:0 0 0 3px var(--ink)}
+.note{font-size:.82rem;color:var(--muted);margin:10px 0 0}
+.ad{min-height:90px;border:1px dashed var(--line);border-radius:8px;display:none;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem}
+.stage{overflow:hidden;border-radius:6px;box-shadow:0 2px 14px rgba(0,0,0,.18)}
+body:not(.show-prev) #pane-prev{display:none}
+body.show-prev #pane-form{display:none}
+@media (min-width:900px){
+ .wrap{grid-template-columns:minmax(380px,460px) 1fr;align-items:start}
+ .tabs{display:none}
+ body #pane-prev,body #pane-form{display:block!important}
+ #pane-prev{position:sticky;top:12px}
+}
+/* ===== Hoja del currículum (siempre blanca, como el papel) ===== */
+.sheet{width:794px;min-height:1123px;background:#fff;color:#1b2333;transform-origin:top left;font-size:13.5px;line-height:1.45;font-family:Figtree,system-ui,sans-serif}
+.sheet h1{margin:0;font-size:30px;line-height:1.1;font-weight:800}
+.sheet h2{font-size:13px;margin:18px 0 6px;font-weight:800;letter-spacing:.04em;color:var(--cv)}
+.sheet .role{font-size:16px;margin:4px 0 0;font-weight:500}
+.sheet .item{margin-bottom:10px;break-inside:avoid}
+.sheet .row{display:flex;justify-content:space-between;gap:10px}
+.sheet .row span{color:#5b6478;white-space:nowrap;font-size:12.5px}
+.sheet .sub{color:#3a4358}
+.sheet ul{margin:3px 0 0;padding-left:18px}
+.sheet p{margin:0}
+.sheet .chip{display:inline-block;border:1px solid var(--cv);border-radius:20px;padding:2px 10px;margin:0 6px 6px 0;font-size:12.5px}
+.sheet .empty{color:#9aa4ba;font-style:italic}
+/* Clásica y Sencilla */
+.top-l{padding:44px 52px}
+.top-l header{border-bottom:3px solid var(--cv);padding-bottom:14px;margin-bottom:4px}
+.top-l .contact{margin-top:8px;color:#3a4358}
+.t-sencilla header{border-bottom:1px solid #1b2333}
+.t-sencilla h1{color:#1b2333}.t-sencilla h2{color:#1b2333;border-bottom:1px solid #d9dee8;padding-bottom:3px}
+.t-clasica h1{color:var(--cv)}
+/* Moderna */
+.t-moderna{display:grid;grid-template-columns:250px 1fr;background:linear-gradient(to right,var(--cv) 250px,#fff 250px)}
+.t-moderna aside{color:#fff;padding:44px 24px}
+.t-moderna aside h1{font-size:26px}
+.sheet .foto{width:110px;height:110px;object-fit:cover;border-radius:50%;display:block}
+.top-l .foto{float:right;margin-left:16px;border:3px solid var(--cv)}
+.t-moderna .foto{margin:0 auto 16px;border:3px solid rgba(255,255,255,.7)}
+.t-moderna aside .role{opacity:.9;font-size:14px}
+.t-moderna aside h2{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:3px}
+.t-moderna aside .chip{border-color:rgba(255,255,255,.6)}
+.t-moderna aside p{margin-bottom:5px;word-break:break-word}
+.t-moderna main{padding:44px 40px 44px 34px}
+.t-moderna main h2:first-child{margin-top:0}
+@media print{
+ @page{size:A4;margin:0}
+ html,body{background:#fff!important}
+ body>*:not(.wrap),.wrap>*:not(#pane-prev),.top,.tabs,.noprint{display:none!important}
+ .wrap{display:block;padding:0;max-width:none}
+ #pane-prev{display:block!important;position:static}
+ .stage{height:auto!important;box-shadow:none;border-radius:0;overflow:visible}
+ .sheet{transform:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.site{max-width:1180px;margin:0 auto;padding:6px 14px 30px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body class="show-prev-off">
+<header class="top">
+ <h1>Currículum gratis para República Dominicana</h1>
+ <p>Llénalo desde tu celular y descárgalo en PDF. Sin registro, sin costo.</p>
+</header>
+
+<div class="wrap">
+ <div class="tabs" role="group" aria-label="Vista">
+  <button id="tab-form" aria-pressed="true">1. Llenar datos</button>
+  <button id="tab-prev" aria-pressed="false">2. Ver y descargar</button>
+ </div>
+
+ <section id="pane-form" aria-label="Formulario">
+  <fieldset>
+   <legend>¿Quieres ver un ejemplo?</legend>
+   <div class="chips">
+    <button type="button" data-ej="cajero">Cajero/a</button>
+    <button type="button" data-ej="callcenter">Call center</button>
+    <button type="button" data-ej="turismo">Turismo y hoteles</button>
+    <button type="button" id="limpiar">Empezar en blanco</button>
+   </div>
+   <p class="hint">Se llenará con datos de ejemplo. Cámbialos por los tuyos.</p>
+  </fieldset>
+
+  <fieldset>
+   <legend>Datos personales</legend>
+   <label for="nombre">Nombre completo</label><input id="nombre" data-k="nombre" autocomplete="name">
+   <label for="puesto">Profesión u oficio (opcional)</label><input id="puesto" data-k="puesto" placeholder="Ej.: Técnico en electricidad, Estudiante de Contabilidad">
+   <p class="hint">Solo si ya la tienes. Si aún no, déjalo en blanco: tu experiencia y tus habilidades hablan por ti.</p>
+   <label for="fotoin">Foto (opcional)</label>
+   <input id="fotoin" type="file" accept="image/*">
+   <p class="hint">Usa una foto de frente, con fondo claro. Se queda en tu dispositivo. <button type="button" class="rm" id="fotoquitar" style="background:none;border:none;color:var(--red);padding:0;font-weight:700">Quitar foto</button></p>
+   <div class="g2">
+    <div><label for="tel">Teléfono / WhatsApp</label><input id="tel" data-k="tel" type="tel" inputmode="tel" placeholder="809-000-0000" autocomplete="tel"></div>
+    <div><label for="email">Correo</label><input id="email" data-k="email" type="email" autocomplete="email"></div>
+   </div>
+   <label for="ciudad">Sector y ciudad</label><input id="ciudad" data-k="ciudad" placeholder="Ej.: Los Alcarrizos, Santo Domingo Oeste">
+   <label for="cedula">Cédula (opcional)</label><input id="cedula" data-k="cedula" inputmode="numeric" placeholder="000-0000000-0">
+   <p class="hint">La cédula es opcional. Muchas empresas la piden después, en persona.</p>
+  </fieldset>
+
+  <fieldset>
+   <legend>Perfil</legend>
+   <label for="resumen">Cuéntales quién eres en 2 o 3 líneas</label>
+   <textarea id="resumen" data-k="resumen" placeholder="Ej.: Persona responsable y puntual, con 2 años de experiencia atendiendo público."></textarea>
+  </fieldset>
+
+  <fieldset>
+   <legend>Experiencia laboral</legend>
+   <div id="exp-list"></div>
+   <button type="button" id="add-exp" style="margin-top:10px">+ Agregar trabajo</button>
+  </fieldset>
+
+  <fieldset>
+   <legend>Estudios</legend>
+   <div id="edu-list"></div>
+   <button type="button" id="add-edu" style="margin-top:10px">+ Agregar estudio</button>
+  </fieldset>
+
+  <fieldset>
+   <legend>Habilidades e idiomas</legend>
+   <label for="skills">Habilidades (sepáralas con coma)</label><input id="skills" data-k="skills" placeholder="Atención al cliente, Manejo de caja, Excel">
+   <label for="langs">Idiomas (sepáralos con coma)</label><input id="langs" data-k="langs" placeholder="Español (nativo), Inglés (básico)">
+   <label for="refs">Referencias (opcional)</label><textarea id="refs" data-k="refs" placeholder="Nombre, cargo y teléfono. O escribe: Disponibles al solicitarse."></textarea>
+  </fieldset>
+
+  <fieldset>
+   <legend>Diseño</legend>
+   <label for="plantilla">Plantilla</label>
+   <select id="plantilla" data-k="plantilla"><option value="clasica">Clásica</option><option value="moderna">Moderna (con barra lateral)</option><option value="sencilla">Sencilla (una línea, ideal para imprimir)</option></select>
+   <label>Color</label>
+   <div class="swatches" id="swatches"></div>
+  </fieldset>
+  <button class="primary" type="button" id="ir-prev" style="width:100%">Ver mi currículum</button>
+  <p class="note">Tus datos se quedan en tu teléfono o computadora. Este sitio no los guarda ni los envía a ningún servidor.</p>
+ </section>
+
+ <section id="pane-prev" aria-label="Vista previa">
+  <div class="noprint" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+   <button class="primary" type="button" id="pdf">Descargar PDF</button>
+   <button type="button" id="volver" class="noprint">Seguir editando</button>
+  </div>
+  <p class="hint noprint" style="margin:0 0 10px">Se abrirá la ventana de impresión: elige <b>Guardar como PDF</b> como destino. Si no ves la opción, usa Chrome.</p>
+  <div class="stage" id="stage"><div class="sheet" id="sheet"></div></div>
+  <!-- Espacio para anuncio de AdSense cuando te lo aprueben -->
+  <div class="ad noprint" id="ad-slot" style="margin-top:14px">Espacio publicitario</div>
+ </section>
+</div>
+<p class="site">Hecho en República Dominicana. Esta herramienta es gratuita y no guarda tus datos.</p>
+
+<script>
+const COLORS=['#0b3d91','#c8102e','#0f766e','#6d28d9','#1f2937'];
+const blank=()=>({nombre:'',puesto:'',tel:'',email:'',ciudad:'',cedula:'',resumen:'',skills:'',langs:'',refs:'',plantilla:'clasica',color:COLORS[0],foto:'',exp:[{}],edu:[{}]});
+let S=blank();
+const EJ={
+cajero:{nombre:'María Fernanda Pérez',puesto:'Cajera',tel:'809-555-0123',email:'maria.perez@correo.com',ciudad:'Los Alcarrizos, Santo Domingo Oeste',cedula:'',resumen:'Cajera responsable y puntual, con 3 años de experiencia en supermercados. Manejo de efectivo, tarjetas y cuadre de caja con trato amable al cliente.',skills:'Manejo de caja, Cuadre diario, Atención al cliente, Trabajo en equipo',langs:'Español (nativo)',refs:'Disponibles al solicitarse.',exp:[{puesto:'Cajera',empresa:'Supermercado La Esquina, Santo Domingo',desde:'Mar 2022',hasta:'Presente',desc:'Cobro en efectivo y con tarjeta\nCuadre de caja al cierre de cada turno\nAtención a más de 150 clientes por día'},{puesto:'Auxiliar de ventas',empresa:'Tienda Mi Hogar',desde:'Ene 2021',hasta:'Feb 2022',desc:'Organización de mercancía y apoyo en caja'}],edu:[{titulo:'Bachiller',centro:'Liceo Juan Pablo Duarte',anio:'2020'},{titulo:'Curso de Servicio al Cliente',centro:'INFOTEP',anio:'2022'}]},
+callcenter:{nombre:'Carlos Alberto Jiménez',puesto:'Agente de servicio al cliente (bilingüe)',tel:'829-555-0188',email:'carlos.jimenez@correo.com',ciudad:'Santiago de los Caballeros',cedula:'',resumen:'Agente bilingüe con experiencia en llamadas de soporte y ventas. Buena comunicación, manejo de la presión y cumplimiento de metas de calidad.',skills:'Atención telefónica, Manejo de quejas, Digitación rápida, Microsoft Office, CRM',langs:'Español (nativo), Inglés (avanzado)',refs:'Disponibles al solicitarse.',exp:[{puesto:'Agente de servicio al cliente',empresa:'Contact Center Caribe, Santiago',desde:'Jun 2022',hasta:'Presente',desc:'Atención de 60 llamadas diarias en inglés y español\nResolución de reclamos al primer contacto\nCalificación de calidad superior al 90%'}],edu:[{titulo:'Estudiante de Administración de Empresas',centro:'UTESA',anio:'En curso'},{titulo:'Bachiller',centro:'Liceo Dr. Toribio Bencosme',anio:'2019'}]},
+turismo:{nombre:'Yamilet Rodríguez Santana',puesto:'Camarera / Auxiliar de hotel',tel:'849-555-0147',email:'yamilet.rs@correo.com',ciudad:'Bávaro, Punta Cana',cedula:'',resumen:'Trabajadora de hotel con 2 temporadas de experiencia en limpieza de habitaciones y áreas comunes. Puntual, ordenada y con buen trato a los huéspedes.',skills:'Limpieza de habitaciones, Trato al huésped, Orden y puntualidad, Trabajo en equipo',langs:'Español (nativo), Inglés (básico)',refs:'Disponibles al solicitarse.',exp:[{puesto:'Camarera de habitaciones',empresa:'Resort Playa Dorada, Bávaro',desde:'Nov 2022',hasta:'Presente',desc:'Limpieza y preparación de 14 habitaciones por turno\nReporte de objetos olvidados y daños\nCumplimiento de los estándares de higiene del hotel'}],edu:[{titulo:'Técnico en Servicios Turísticos',centro:'INFOTEP',anio:'2022'},{titulo:'Bachiller',centro:'Liceo de Higüey',anio:'2021'}]}
+};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const split=s=>String(s||'').split(/[,\n]/).map(x=>x.trim()).filter(Boolean);
+
+function entryForm(type,i,e){
+ const f=type==='exp'
+ ?`<label>Puesto</label><input data-t="exp" data-i="${i}" data-f="puesto" value="${esc(e.puesto)}">
+   <label>Empresa y lugar</label><input data-t="exp" data-i="${i}" data-f="empresa" value="${esc(e.empresa)}">
+   <div class="g2"><div><label>Desde</label><input data-t="exp" data-i="${i}" data-f="desde" placeholder="Mar 2022" value="${esc(e.desde)}"></div><div><label>Hasta</label><input data-t="exp" data-i="${i}" data-f="hasta" placeholder="Presente" value="${esc(e.hasta)}"></div></div>
+   <label>Qué hacías (una línea por tarea)</label><textarea data-t="exp" data-i="${i}" data-f="desc">${esc(e.desc)}</textarea>`
+ :`<label>Título o nivel</label><input data-t="edu" data-i="${i}" data-f="titulo" placeholder="Bachiller, Técnico, Curso..." value="${esc(e.titulo)}">
+   <label>Centro de estudios</label><input data-t="edu" data-i="${i}" data-f="centro" value="${esc(e.centro)}">
+   <label>Año</label><input data-t="edu" data-i="${i}" data-f="anio" value="${esc(e.anio)}">`;
+ return `<div class="entry">${f}<button type="button" class="rm" data-rm="${type}" data-i="${i}">Quitar</button></div>`;
+}
+function renderForms(){
+ $('#exp-list').innerHTML=S.exp.map((e,i)=>entryForm('exp',i,e)).join('');
+ $('#edu-list').innerHTML=S.edu.map((e,i)=>entryForm('edu',i,e)).join('');
+ document.querySelectorAll('[data-k]').forEach(el=>{el.value=S[el.dataset.k]||(el.tagName==='SELECT'?S.plantilla:'')});
+ $('#swatches').innerHTML=COLORS.map(c=>`<button type="button" class="sw" data-c="${c}" style="background:${c}" aria-label="Color ${c}" aria-pressed="${c===S.color}"></button>`).join('');
+}
+function sheetHTML(){
+ const s=S,contact=[s.tel,s.email,s.ciudad,s.cedula&&'Cédula: '+s.cedula].filter(Boolean).map(esc);
+ const exp=s.exp.filter(e=>e.puesto||e.empresa).map(e=>`<div class="item"><div class="row"><b>${esc(e.puesto)}</b><span>${esc([e.desde,e.hasta].filter(Boolean).join(' – '))}</span></div><div class="sub">${esc(e.empresa)}</div>${split(e.desc).length?'<ul>'+String(e.desc).split('\n').filter(x=>x.trim()).map(x=>`<li>${esc(x.trim())}</li>`).join('')+'</ul>':''}</div>`).join('');
+ const edu=s.edu.filter(e=>e.titulo||e.centro).map(e=>`<div class="item"><div class="row"><b>${esc(e.titulo)}</b><span>${esc(e.anio)}</span></div><div class="sub">${esc(e.centro)}</div></div>`).join('');
+ const skills=split(s.skills).map(x=>`<span class="chip">${esc(x)}</span>`).join('');
+ const langs=split(s.langs).map(x=>`<p>${esc(x)}</p>`).join('');
+ const sec=(t,h)=>h?`<h2>${t}</h2>${h}`:'';
+ const foto=s.foto?`<img class="foto" src="${s.foto}" alt="">`:'';
+ const head=`<h1>${esc(s.nombre)||'<span class="empty">Tu nombre</span>'}</h1><p class="role">${esc(s.puesto)}</p>`;
+ if(s.plantilla==='moderna')
+  return `<div class="sheet-in t-moderna"><aside>${foto}${head}${sec('CONTACTO',contact.map(c=>`<p>${c}</p>`).join(''))}${sec('HABILIDADES',skills)}${sec('IDIOMAS',langs)}</aside><main>${sec('PERFIL',s.resumen?`<p>${esc(s.resumen)}</p>`:'')}${sec('EXPERIENCIA LABORAL',exp)}${sec('ESTUDIOS',edu)}${sec('REFERENCIAS',s.refs?`<p>${esc(s.refs).replace(/\n/g,'<br>')}</p>`:'')}</main></div>`;
+ return `<div class="sheet-in top-l t-${s.plantilla}"><header>${foto}${head}<p class="contact">${contact.join(' &nbsp;|&nbsp; ')}</p></header>${sec('PERFIL',s.resumen?`<p>${esc(s.resumen)}</p>`:'')}${sec('EXPERIENCIA LABORAL',exp)}${sec('ESTUDIOS',edu)}${sec('HABILIDADES',skills)}${sec('IDIOMAS',split(s.langs).map(x=>`<span class="chip">${esc(x)}</span>`).join(''))}${sec('REFERENCIAS',s.refs?`<p>${esc(s.refs).replace(/\n/g,'<br>')}</p>`:'')}</div>`;
+}
+function fit(){
+ const sh=$('#sheet'),st=$('#stage');sh.style.transform='none';
+ const k=Math.min(1,st.parentElement.clientWidth/794);
+ sh.style.transform=`scale(${k})`;st.style.height=(sh.offsetHeight*k)+'px';
+}
+function render(){
+ const sh=$('#sheet');sh.style.setProperty('--cv',S.color);sh.innerHTML=sheetHTML();
+ const inner=sh.firstElementChild;sh.className='sheet';sh.style.cssText+=';';
+ // El contenido interno ocupa toda la hoja
+ inner.style.minHeight='1123px';fit();
+}
+document.addEventListener('input',e=>{
+ const el=e.target;
+ if(el.dataset.k){S[el.dataset.k]=el.value}
+ else if(el.dataset.t){S[el.dataset.t][+el.dataset.i][el.dataset.f]=el.value}
+ else return;render();
+});
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.ej){const f=S.foto,pl=S.plantilla,co=S.color;S=Object.assign(blank(),JSON.parse(JSON.stringify(EJ[b.dataset.ej])));S.plantilla=pl;S.color=co;S.foto=f;renderForms();render();}
+ else if(b.id==='fotoquitar'){S.foto='';$('#fotoin').value='';render()}
+ else if(b.id==='limpiar'){S=blank();renderForms();render()}
+ else if(b.id==='add-exp'){S.exp.push({});renderForms();render()}
+ else if(b.id==='add-edu'){S.edu.push({});renderForms();render()}
+ else if(b.dataset.rm){S[b.dataset.rm].splice(+b.dataset.i,1);if(!S[b.dataset.rm].length)S[b.dataset.rm].push({});renderForms();render()}
+ else if(b.dataset.c){S.color=b.dataset.c;renderForms();render()}
+ else if(b.id==='pdf'){window.print()}
+ else if(b.id==='tab-prev'||b.id==='ir-prev')show(true);
+ else if(b.id==='tab-form'||b.id==='volver')show(false);
+});
+function show(p){
+ document.body.classList.toggle('show-prev',p);
+ $('#tab-prev').setAttribute('aria-pressed',p);$('#tab-form').setAttribute('aria-pressed',!p);
+ fit();window.scrollTo(0,0);
+}
+document.addEventListener('change',e=>{
+ if(e.target.id!=='fotoin'||!e.target.files[0])return;
+ const img=new Image(),url=URL.createObjectURL(e.target.files[0]);
+ img.onload=()=>{const m=Math.min(img.width,img.height),c=document.createElement('canvas');c.width=c.height=300;
+  c.getContext('2d').drawImage(img,(img.width-m)/2,(img.height-m)/2,m,m,0,0,300,300);
+  S.foto=c.toDataURL('image/jpeg',.85);URL.revokeObjectURL(url);render()};
+ img.src=url;
+});
+window.addEventListener('resize',fit);
+window.addEventListener('beforeprint',()=>{$('#sheet').style.transform='none'});
+window.addEventListener('afterprint',fit);
+document.body.className='';
+renderForms();render();
+</script>
+</body>
+</html>
